@@ -1,0 +1,19 @@
+Proof-of-concept application for converting Youtube videos in to *.mp3 files which are then wrapped in a *.m3u playlist. This is managed via an Android application which enables you to choose among your current youtube playlists/videos and then pick the video of your choice to be converted and played.
+
+ _______
+|   A   | <-- [XML] --> Youtube
+|   N   |                       
+|   D   | <-- [SOAP] --> Controller (Java Application)
+|   R   |                    |
+|   O   |                    *-- [REST] --> Converter (Java Application + PERL-script) 
+|   I   |                                                           |
+|   D   | <-- [SOAP] --> Controller (Java Application) <-- [REST] --*
+\_______/
+
+
+******************** DISCLAIMER ********************
+* OBS! This is ONLY a proof-of-concept and should  * 
+* NOT be used as a real world application since it *
+* breaks Youtube's Terms of use.                   *
+* More info: http://www.youtube.com/t/terms)       *
+****************************************************
