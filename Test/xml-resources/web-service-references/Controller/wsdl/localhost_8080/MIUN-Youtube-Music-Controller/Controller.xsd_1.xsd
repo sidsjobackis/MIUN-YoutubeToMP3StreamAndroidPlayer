@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1.1-b09 (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2. --><xs:schema xmlns:tns="http://player.miun/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://player.miun/">
+
+<xs:element name="fetchUserPlaylist" type="tns:fetchUserPlaylist"/>
+
+<xs:element name="fetchUserPlaylistResponse" type="tns:fetchUserPlaylistResponse"/>
+
+<xs:element name="fetchVideo" type="tns:fetchVideo"/>
+
+<xs:element name="fetchVideoResponse" type="tns:fetchVideoResponse"/>
+
+<xs:element name="loginAndFetchPlaylists" type="tns:loginAndFetchPlaylists"/>
+
+<xs:element name="loginAndFetchPlaylistsResponse" type="tns:loginAndFetchPlaylistsResponse"/>
+
+<xs:element name="setAuthenticationKey" type="tns:setAuthenticationKey"/>
+
+<xs:element name="setAuthenticationKeyResponse" type="tns:setAuthenticationKeyResponse"/>
+
+<xs:complexType name="fetchVideo">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fetchVideoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fetchUserPlaylist">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="fetchUserPlaylistResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginAndFetchPlaylists">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="loginAndFetchPlaylistsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setAuthenticationKey">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setAuthenticationKeyResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
