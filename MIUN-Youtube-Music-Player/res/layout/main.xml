@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
+<FrameLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+   	android:layout_width="fill_parent" 
+   	android:layout_height="fill_parent"
+   	android:background="#00ffffff">
+   	
+    <LinearLayout 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_width="match_parent" 
+    	android:layout_height="match_parent" 
+    	android:orientation="vertical"
+	    android:gravity="center_vertical|center_horizontal|center">
+        
+        <ImageView 
+        	android:id="@+id/imageView1" 
+        	android:src="@drawable/miun_logo_port" 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="wrap_content" 
+        	android:layout_marginBottom="100dp">
+        </ImageView>
+        <TextView 
+        	android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content" 
+			android:text="Username"
+			android:layout_height="wrap_content" 
+			android:id="@+id/lb_username">
+		</TextView>
+		<EditText 
+				android:layout_height="wrap_content" 
+				android:id="@+id/tb_username"
+				android:inputType="textPersonName" 
+				android:layout_width="210dp">
+			<requestFocus></requestFocus>
+		</EditText>
+		<TextView 
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content" 
+			android:text="Password"
+			android:layout_height="wrap_content" 
+			android:id="@+id/lb_password">
+		</TextView>
+		<EditText 
+			android:layout_height="wrap_content" 
+			android:id="@+id/tb_password"
+			android:inputType="textPassword" 
+			android:layout_width="210dp">
+		</EditText>
+		<Button 
+			android:text="Enter" 
+			android:id="@+id/bn_login" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content">
+		</Button>
+    </LinearLayout> 
+</FrameLayout> 
+		
+
