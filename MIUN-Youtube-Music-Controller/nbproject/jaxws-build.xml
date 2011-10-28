@@ -46,7 +46,7 @@
     </target>
     <target name="wsimport-client-Converter" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Converter"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Converter" destdir="${build.generated.dir}/jax-wsCache/Converter" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Converter/wsdl/localhost_8080/MIUN-Youtube-Music-Converter/Converter.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/MIUN-Youtube-Music-Converter/Converter?wsdl" xnocompile="true" xendorsed="true" package="miun.connector">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Converter" destdir="${build.generated.dir}/jax-wsCache/Converter" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Converter/wsdl/localhost_8080/MIUN-Youtube-Music-Converter/Converter.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/MIUN-Youtube-Music-Converter/Converter?wsdl" xnocompile="true" xendorsed="true">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Converter/wsdl/localhost_8080/MIUN-Youtube-Music-Converter/Converter.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Converter"/>
         </wsimport>
@@ -57,7 +57,7 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-Converter" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/miun/connector"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/miun/player/converter"/>
         <delete dir="${build.generated.dir}/jax-wsCache/Converter"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-Converter"/>

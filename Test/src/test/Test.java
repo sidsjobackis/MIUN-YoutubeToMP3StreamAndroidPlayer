@@ -46,13 +46,12 @@ public class Test {
     public boolean fetchVideo(String url) {
         
         currentVideo = urlToName(url);
-        String cmdString = "cmd /c perl YoutubeStream-To-FLV-Converter.pl " + url; //"perl YoutubeStream-To-FLV-Converter.pl " + url
+        String cmdString = "cmd /c perl YoutubeStream-To-FLV-Converter.pl " + url;
         Process p;
 
         String s = null;
         
-        try
-        {
+        try {
             p = Runtime.getRuntime().exec( cmdString );
           
             //Handling the streams so that dead lock situation never occurs.  
@@ -112,8 +111,7 @@ public class Test {
         
         String s = null;
         
-        try
-        {
+        try {
             p = Runtime.getRuntime().exec( cmdString );
             BufferedReader stdError = new BufferedReader(new 
                  InputStreamReader(p.getErrorStream()));
@@ -140,7 +138,9 @@ public class Test {
      */
     private void createM3uFile() {
         
-        String[] output = { "#EXTM3U\n", "#EXTINF:123,Sample Artist - Sample title\n", "C:\\Dropbox\\Skolarbete\\Datateknik (AV) - Service Oriented Architecture SOA (7.5hp)\\Project\\MIUN-Youtube-Music-Converter\\" + currentVideo + ".mp3" };
+        String[] output = { "#EXTM3U\n",
+                            "#EXTINF:123,Sample Artist - Sample title\n", 
+                            "C:\\Dropbox\\Skolarbete\\Datateknik (AV) - Service Oriented Architecture SOA (7.5hp)\\Project\\MIUN-Youtube-Music-Converter\\" + currentVideo + ".mp3" };
         
         try {
             FileWriter fstream = new FileWriter( currentVideo + ".m3u");

@@ -5,7 +5,9 @@
 package miun.player.converter;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jws.WebService;
@@ -16,22 +18,38 @@ import javax.jws.WebService;
  */
 @WebService(serviceName = "Converter")
 public class Converter {
-    
-
     private String currentVideo;
    
     public Converter() {
+    }
         
+    public String getM3UStream( String url ) {
+        //url = "http://www.youtube.com/watch?v=TWfph3iNC-k"; //DEBUG
+        String errorMsg = "fetchVideo";
+        if( fetchVideo( url ) ) {
+            errorMsg ="convertToMp3";
+            if( convertToMp3() ) {
+                errorMsg ="createM3uFile";
+                if( createM3uFile() ) {
+                    return this.currentVideo + ".m3u";
+                }
+            }
+        }
+//        String errorMsg = "";
+//        errorMsg = fetchVideo( url );
+//        errorMsg = (String)convertToMp3();
+//        errorMsg = (String)createM3uFile();
+        return "ERROR on (" + url + ") @" + errorMsg;
     }
     
     private String urlToName(String url) {
         return url.substring(31);
     }
     
-    private String fetchVideo(String url) {
+    private boolean fetchVideo(String url) {
         
         currentVideo = urlToName(url);
-        String cmdString = "cmd /c perl YoutubeStream-To-FLV-Converter.pl " + url;
+        String cmdString = "cmd /c perl D:\\Programmering\\Git\\MIUN-YoutubeToMP3StreamAndroidPlayer\\MIUN-Youtube-Music-Converter\\YoutubeStream-To-FLV-Converter.pl " + url; 
         Process p;
         
         //Call the Pearl-script and start download
@@ -51,45 +69,26 @@ public class Converter {
             
             if (p.exitValue() == 0) {
                 System.out.println("CONVERTER: Command Successful");
-                return "CONVERTER: Command Successful"; //true;
+                return true; //"CONVERTER: Command Successful";
             } else {
                 System.out.println("CONVERTER: Command Failure");
-                return "CONVERTER: Command Failure"; //false;
+                return false; //"CONVERTER: Command Failure"; 
             }
             
         } catch (Exception e) {
             System.out.println("CONVERTER: perl-script fetch failed, error: " + e.toString());
             Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, e);
-            return "CONVERTER: perl-script fetch failed, error: " + e.toString();//false;
+            return false; //"CONVERTER: perl-script fetch failed, error: " + e.toString();//false;
         }
     }
-    
-    public String getM3UStream( String url ) {
-        //url = "http://www.youtube.com/watch?v=TWfph3iNC-k"; //DEBUG
-//        String errorMsg = "fetchVideo";
-//        if ( fetchVideo( url ) ) {
-//            errorMsg ="convertToMp3";
-//            if( convertToMp3() ) {
-//                errorMsg ="createM3uFile";
-//                if( createM3uFile() ) {
-//                    return this.currentVideo + ".m3u";
-//                }
-//            }
-//        }
-        String errorMsg = "";
-        errorMsg = fetchVideo( url );
-        convertToMp3();
-        createM3uFile();
-        return "ERROR: (" + url + ")" + errorMsg;
-    }
-    
+        
     /**
      * Converts the *.mp4 to *.mp3 using the externa ffmpeg tool
      * @return filepath to the *.m3u (e.g. http://example.com/example.m3u)
      */
     private boolean convertToMp3() {
   
-        String cmdString = "cmd.exe /c ffmpeg.exe -i " + currentVideo + ".mp4 " + currentVideo + ".mp3";
+        String cmdString = "cmd.exe /c D:\\Programmering\\Git\\MIUN-YoutubeToMP3StreamAndroidPlayer\\MIUN-Youtube-Music-Converter\\ffmpeg.exe -i " + currentVideo + ".flv " + currentVideo + ".mp3";
         Process p;
         
         try {
@@ -124,13 +123,19 @@ public class Converter {
      * Creates an *m3u file with the new *.mp3 file
      */
     private boolean createM3uFile() {
-        
-        String[] output = { "#EXTM3U\n", "#EXTINF:123,Sample Artist - Sample title\n", "C:\\Dropbox\\Skolarbete\\Datateknik (AV) - Service Oriented Architecture SOA (7.5hp)\\Project\\MIUN-Youtube-Music-Converter\\" + currentVideo + ".mp3" };
+       
+           
         
         try {
-            FileWriter fstream = new FileWriter( currentVideo + ".m3u");
+            FileWriter fstream = new FileWriter( currentVideo + ".m3u" );
             BufferedWriter out = new BufferedWriter(fstream);
-           
+        
+//            FacesContext context = FacesContext.getCurrentInstance(); 
+//            ServletContext sc = (ServletContext) context.getExternalContext().getContext(); 
+            String path = getDocRoot();//sc.getRealPath(currentVideo + ".m3u");
+
+            String[] output = { "#EXTM3U\n", "#EXTINF:123,Sample Artist - Sample title\n", path + currentVideo + ".mp3" };
+            
             for(String line : output) {
                 out.write(line);
             }
@@ -144,4 +149,26 @@ public class Converter {
         }
         return true;
     }
+
+    
+    /** 
+     * Get path of the docroot, regardless of where project is deployed 
+     * @return current context path 
+     */ 
+    private static String getDocRoot() { 
+        File currentContextFile = new File(""); 
+        
+        try { 
+            currentContextFile = currentContextFile.getCanonicalFile(); 
+        } catch (IOException e) { 
+            currentContextFile = currentContextFile.getAbsoluteFile(); 
+        } 
+        
+        return currentContextFile.getPath() + "\\"; 
+    }
+
+
 }
+
+
+

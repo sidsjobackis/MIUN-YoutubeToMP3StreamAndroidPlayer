@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1.1-b09 (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2. --><xs:schema xmlns:tns="http://player.miun/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://player.miun/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1.1-b09 (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2. --><xs:schema xmlns:tns="http://converter.player.miun/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://converter.player.miun/">
 
 <xs:element name="getM3UStream" type="tns:getM3UStream"/>
 

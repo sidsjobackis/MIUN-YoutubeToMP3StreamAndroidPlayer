@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceRef;
-import miun.connector.Converter_Service;
+import miun.player.converter.Converter_Service;
 
 
 @WebService(serviceName = "Controller")
@@ -58,7 +58,7 @@ public class Controller {
         String m3uURL = "";
 
         //WebService call
-        miun.connector.Converter port = service.getConverterPort();  
+        miun.player.converter.Converter port = service.getConverterPort();
         m3uURL = port.getM3UStream( youtubeUrl );
         
         try {
@@ -70,6 +70,7 @@ public class Controller {
                 
         return m3uURL;
     }
+
 }
 
     

@@ -9,7 +9,7 @@
     <client name="Converter">
       <wsdl-url>http://localhost:8080/MIUN-Youtube-Music-Converter/Converter?wsdl</wsdl-url>
       <local-wsdl-file>localhost_8080/MIUN-Youtube-Music-Converter/Converter.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">miun.connector</package-name>
+      <package-name>miun.player.converter</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -31,10 +31,6 @@
         <wsimport-option>
           <wsimport-option-name>xendorsed</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>miun.connector</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>
