@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+   	android:layout_width="fill_parent" 
+   	android:layout_height="fill_parent"
+   	android:background="#00ffffff">
+   	
+   	<LinearLayout 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_width="match_parent" 
+    	android:layout_height="match_parent" 
+    	android:gravity="left|center_vertical" 
+    	android:orientation="horizontal">
+        
+        <ImageView 
+        	android:id="@+id/imageView1" 
+        	android:src="@drawable/miun_logo_side" 
+        	android:layout_height="242dp" 
+        	android:layout_width="72dp">
+        </ImageView>
+    </LinearLayout> 
+   	
+   	
+   	<LinearLayout 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_width="match_parent" 
+    	android:layout_height="match_parent" 
+    	android:orientation="vertical"
+	    android:gravity="center_vertical|center_horizontal|center">
+   		<TextView 
+   			android:text="Song title" 
+   			android:layout_height="wrap_content" 
+   			android:textAppearance="?android:attr/textAppearanceLarge" 
+   			android:layout_width="wrap_content" 
+   			android:id="@+id/tv_songtitle"
+   			android:paddingBottom="100dp">
+   		</TextView>
+	    <Button 
+	    	android:text="Pause" 
+	    	android:id="@+id/bt_playbutton" 
+	    	android:layout_width="150dp" 
+	    	android:layout_height="wrap_content">
+	    </Button>
+	    <Button 
+	    	android:text="Mute" 
+	    	android:id="@+id/bt_mute" 
+	    	android:layout_width="150dp" 
+	    	android:layout_height="wrap_content">
+	    </Button>
+   	</LinearLayout>
+</FrameLayout> 
+		
+
