@@ -5,13 +5,13 @@ Proof-of-concept application for converting Youtube videos in to *.mp3 files whi
 
  _______
 /       \
-|   A   | <-- [XML] --> Youtube
+|   A   | <-- [REST{JSON}] --> Youtube
 |   N   |                       
-|   D   | <-- [SOAP] --> Controller (Java Application)
+|   D   | <-- [REST{GSON}] --> Controller (Java Application)
 |   R   |                    |
-|   O   |                    *-- [REST] --> Converter (Java Application + PERL-script) 
-|   I   |                                                           |
-|   D   | <-- [SOAP] --> Controller (Java Application) <-- [REST] --*
+|   O   |                    *-- [SOAP] --> Converter (Java Application + PERL-script) 
+|   I   |                                                                 |
+|   D   | <-- [REST{GSON}] --> Controller (Java Application) <-- [SOAP] --*
 \_______/
 
 
